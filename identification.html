@@ -2,39 +2,230 @@
 <html>
 
 <head>
-    <title>TP3</title>
+    <title>TP3 - Yassine Choujaa & Hamza Nassime</title>
+    <meta charset="UTF-8">
+    <script src="js/scriptP1.js"></script>
+    <script src="js/scriptP2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        #p3 {
+            border: 1px solid black;
+        }
+
+        #p0,
+        #p1,
+        #p2 {
+            font-size: 20px;
+        }
+
+        #affichage span {
+            font-size: 40px;
+        }
+
+        #menu {
+            width: 20%;
+            font-size: 2em;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #affichage {
+            width: 75%;
+            display: inline-block;
+            font-size: 1.5em;
+        }
+
+        #affichage .categorie {
+            width: 24%;
+            display: inline-block;
+            margin-top: 0px;
+            padding: 0px;
+        }
+
+        #menu ul ul {
+            display: none;
+            margin-left: 20px;
+        }
+
+        #menu ul {
+            display: block;
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            background-color: #e5eecc;
+        }
+
+        .choisir {
+            background-color: #d5ccee;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
+    <div id="p0">
         <h1>Travail pratique #3</h1>
-        <br>
         <h2>Identification</h2>
         <p>Ce travail a été fait par Yassine Choujaa matricule: 20218574 et Hamza Nassime matricule: 20218601</p>
     </div>
 
-    <div>
-        <h1>Partie 1: Formulaire de conversion</h1>
+    <div id="p1">
+        <h1>Partie 1: Formulaire de conversion (3 pts)</h1>
         <label for="valeur" style="display: inline;margin-left: 3px;">Valeur: </label>
-        <input type="text" id="valeur" name="valeur" size="20" value="0"> <p style="display: inline;">Résultat ici</p>
+        <input type="text" id="valeur" name="valeur" size="20" value="0"> <span id="resultat">Résultat ici</span>
         <br>
-        <button type="button" id="buttonPCM">Pouces vers cm</button>
-        <button type="button" id="buttonCMP">cm vers Pouces</button>
-        <button type="button" id="buttonCF">Celcius vers Farenheit</button>
-        <button type="button" id="buttonFC">Farenheit vers Celcius</button>
+        <button type="button" onclick="pouceVersCM()">Pouces vers cm</button>
+        <button type="button" onclick="CMVersPouces()">cm vers Pouces</button>
+        <button type="button" onclick="CVersF()">Celcius vers Farenheit</button>
+        <button type="button" onclick="FVersC()">Farenheit vers Celcius</button>
+
     </div>
 
-    <div>
-        <h1>Partie 2: Affichage dans la page Web</h1>
-        <label for="nom" style="display: inline;margin-left: 3px;">Nom: </label>
+    <div id="p2">
+        <h1>Partie 2: Affichage dans la page Web (contrôlé par JavaScript - 3 pts)</h1>
+        <p for="nom" style="display: inline;margin-left: 3px;">Nom: </p>
         <input type="text" id="nom" name="nom" size="20">
         <br>
-        <label for="niveau" style="display: inline;margin-left: 3px;">Niveau (1 à 6): </label>
+        <p for="niveau" style="display: inline;margin-left: 3px;">Niveau (1 à 6): </p>
         <input type="text" id="niveau" name="niveau" size="20">
-        <button type="button" id="affichage">Afficher partie 2</button>
-        <P>Affichage ici</P>
+        <button type="button" onclick="affichage()">Afficher partie 2</button>
+        <br>
+        <div id="affichage">
+            <p>Affichage ici</p>
+        </div>
     </div>
 
+    <div id="p3">
+        <h1>Partie 3: Affichage du menu, animation des images et calcul du coût (6 pts)</h1>
+
+        <div id="menu">
+            <ul>
+                <li class="choisir">Menu</li>
+                <li>Entrée
+                    <ul>
+                        <li>Escargot</li>
+                        <li>Salade verte</li>
+                        <li>Salade César</li>
+                    </ul>
+                </li>
+                <li>Principal
+                    <ul>
+                        <li>Spaghetti</li>
+                        <li>Steak</li>
+                        <li>Pizza</li>
+                    </ul>
+                </li>
+                <li>Dessert
+                    <ul>
+                        <li>Crème glacée</li>
+                        <li>Gateau</li>
+                        <li>Pouding</li>
+                    </ul>
+                </li>
+                <li>Boisson
+                    <ul>
+                        <li>Café / Thé</li>
+                        <li>Boisson gazeuse</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+        <div id="affichage">
+            <h4 style="margin-top: 5px;">Votre choix:</h4>
+            <p class="categorie" id="Entree">Entrée:
+                <br>
+                <img src="toto.jpg" alt="" id="imgEntree">
+                <br>
+                <span id="prixEntree">
+                </span>
+            </p>
+            <p class="categorie" id="Principal">Principal:
+                <br>
+                <img src="images/svr.jpg" alt="" id="imgPrincipal">
+                <br>
+                <span id="prixPrincipal"></span>
+            </p>
+            <p class="categorie" id="Dessert">Dessert:
+                <br>
+                <img src="toto.jpg" alt="" id="imgDessert">
+                <br>
+                <span id="prixDessert">
+                </span>
+            </p>
+            <p class="categorie" id="Boisson">Boisson:
+                <br>
+                <img src="toto.jpg" alt="" id="imgBoisson">
+                <br>
+                <span id="prixBoisson">
+                </span>
+            </p>
+
+            <button style="font-size: 30px;" type="button" id="facture">Cliquez ici pour calculer la facture</button>
+            <p id="textFacture"></p>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var monMenu = {
+                "Escargot": { cat: "Entree", image: "escargot.jpg", prix: 5.50 },
+                "Salade verte": { cat: "Entree", image: "salade2.jpg", prix: 5.95 },
+                "Salade César": { cat: "Entree", image: "salade.jpg", prix: 6.95 },
+                "Spaghetti": { cat: "Principal", image: "spaghetti.jpg", prix: 15.95 },
+                "Steak": { cat: "Principal", image: "steak.jpg", prix: 25.95 },
+                "Pizza": { cat: "Principal", image: "pizza.jpg", prix: 17.95 },
+                "Crème glacée": { cat: "Dessert", image: "cremeglacee.jpg", prix: 4.25 },
+                "Gateau": { cat: "Dessert", image: "gateau.jpg", prix: 4.95 },
+                "Pouding": { cat: "Dessert", image: "pouding.jpg", prix: 3.95 },
+                "Café / Thé": { cat: "Boisson", image: "cafe.jpg", prix: 2.50 },
+                "Boisson gazeuse": { cat: "Boisson", image: "boisson.jpg", prix: 2.95 }
+            };
+
+            $('li').on('click', function (e) {
+                if ($(this).hasClass('choisir'))
+                    return;
+                var element = $(this).parent();
+
+                element.find('li').removeClass('choisir').find('ul').hide();
+
+                $(this).addClass('choisir').children('ul').slideToggle(500);
+            });
+
+            $('li li').on('click', function (e) {
+                var choixMenu = monMenu[$(this).html()];
+                var idImg = "#img" + choixMenu["cat"];
+                var idPrix = "#prix" + choixMenu["cat"];
+                var nomFichierImg = "images/" + choixMenu["image"];
+                var prix = choixMenu["prix"] + "$";
+
+                $(idPrix).html(prix);
+                $(idImg).attr("src", nomFichierImg);
+            });
+
+            $("button").on('click', function (e) {
+                var prixEntree = parseFloat($("#prixEntree").html());
+                var prixPrincipal = parseFloat($("#prixPrincipal").html());
+                var prixDessert = parseFloat($("#prixDessert").html());
+                var prixBoisson = parseFloat($("#prixBoisson").html());
+
+                var total = prixEntree + prixPrincipal + prixDessert + prixBoisson;
+                var tax = total * 0.14975;
+                var final = total + tax;
+
+                if (isNaN(prixEntree)) prixEntree = 0;
+                if (isNaN(prixPrincipal)) prixPrincipal = 0;
+                if (isNaN(prixDessert)) prixDessert = 0;
+                if (isNaN(prixBoisson)) prixBoisson = 0;
+                if (isNaN(total)) total = 0;
+                if (isNaN(tax)) tax = 0;
+                if (isNaN(final)) final = 0;
+
+                document.getElementById("textFacture").innerHTML = "Total: " + total.toFixed(2) + "$ taxes: " + tax.toFixed(2) + " = " + final.toFixed(2);
+            });
+        });
+    </script>
 </body>
 
 </html>
